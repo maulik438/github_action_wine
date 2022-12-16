@@ -22,8 +22,8 @@ jobs:
           echo " ## Model Performance" >> report.md
           cat metrics.txt >> report.md
           echo " ## Visulization" >> report.md
-          echo "![](./feature_importance.png)" >> report.md
-          echo "![](./residuals.png)" >> report.md          
+          echo "![](feature_importance.png)" >> report.md
+          echo "![](residuals.png)" >> report.md          
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
