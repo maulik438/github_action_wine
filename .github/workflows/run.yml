@@ -12,5 +12,7 @@ jobs:
         run: |
           # Your ML workflow goes here
           pip install -r requirements.txt
-          echo pip list
+          pip list
           python train.py
+          echo "Model Performance"
+          cat metrics.txt
