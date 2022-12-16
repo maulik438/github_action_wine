@@ -29,5 +29,5 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
-          file_pattern: '*.md'
+          file_pattern: '*.md *.png'
           branch: experiment1
