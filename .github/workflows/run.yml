@@ -17,11 +17,13 @@ jobs:
         run: |
           # Your ML workflow goes here
           python train.py  
+      - name: Result reporting
+        run: |
           echo " ## Model Performance" >> report.md
           cat metrics.txt >> report.md
           echo " ## Visulization" >> report.md
-          #feature_importance.png --md >> report.md
-          #residuals.png --md >> report.md
+          echo "![](./feature_importance.png)" >> report.md
+          echo "![](./residuals.png)" >> report.md          
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
