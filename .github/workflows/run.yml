@@ -1,4 +1,4 @@
-name: your-workflow-name
+name: wine-model
 on: [push]
 jobs:
   run:
@@ -10,11 +10,12 @@ jobs:
         with:
           python-version: "3.10"
       - name: Install dependencies
+        run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Train model
         run: |
-          # Your ML workflow goes here      
+          # Your ML workflow goes here
           python train.py
           echo "Model Performance"
           cat metrics.txt
