@@ -21,9 +21,11 @@ jobs:
         run: |
           echo " ## Model Performance" >> report.md
           cat metrics.txt >> report.md
+          cp feature_importance.png .github/images/feature_importance.png
+          cp residuals.png .github/images/residuals.png
           echo " ## Visulization" >> report.md
-          echo "![image](feature_importance.png)" >> report.md
-          echo "![image](residuals.png)" >> report.md          
+          echo "![image](.github/images/feature_importance.png)" >> report.md
+          echo "![image](.github/images/residuals.png)" >> report.md          
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
