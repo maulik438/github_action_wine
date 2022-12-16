@@ -19,11 +19,14 @@ jobs:
           python train.py  
           echo " ## Model Performance" >> report.md
           cat metrics.txt >> report.md
+          echo " ## Visulization" >> report.md
+          feature_importance.png -- md >> >> report.md
+          residuals.png -- md >> >> report.md
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
           branch: main
-          commit_user_name: maulik438
-          commit_user_email: maulikpandya1@yahoo.co.in
-          commit_author: maulik438 <maulikpandya1@yahoo.co.in>
+          #commit_user_name: maulik438
+          #commit_user_email: maulikpandya1@yahoo.co.in
+          #commit_author: maulik438 <maulikpandya1@yahoo.co.in>
 
