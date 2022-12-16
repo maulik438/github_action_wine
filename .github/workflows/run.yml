@@ -1,4 +1,4 @@
-name: train-ml-wine-model
+name: your-workflow-name
 on: [push]
 jobs:
   run:
