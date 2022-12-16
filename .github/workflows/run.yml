@@ -16,6 +16,14 @@ jobs:
       - name: Train model
         run: |
           # Your ML workflow goes here
-          python train.py
+          python train.py  
           echo " ## Model Performance" >> report.md
           cat metrics.txt >> report.md
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update generated README
+          branch: main
+          commit_user_name: Maulik
+          commit_user_email: maulik@github.com
+          commit_author: Maulik <maulik@github.com>
+
