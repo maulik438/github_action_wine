@@ -17,5 +17,5 @@ jobs:
         run: |
           # Your ML workflow goes here
           python train.py
-          echo "Model Performance"
-          cat metrics.txt
+          echo " ## Model Performance" >> report.md
+          cat metrics.txt >> report.md
