@@ -1,4 +1,4 @@
-name: your-workflow-name
+name: wine-model
 on: [push]
 jobs:
   run:
