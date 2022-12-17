@@ -20,11 +20,9 @@ jobs:
       - name: Get current date
         id: date
         run: |
-          echo $date
-          #echo "report=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
-          #run: echo $report     
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Update generated README
-          file_pattern: '*.md *.png'
-          branch: experiment1
+          echo date
+          echo "report=$(date +'%Y-%m-%d-%H-%M-%S')" 
+          echo $report
+          echo "report=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
+          echo $report     
+
