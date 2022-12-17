@@ -23,17 +23,19 @@ jobs:
           echo "time=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
       - name: Result reporting
         env:
-          report_path: .github/reports/${{ env.time }}.md
-          feature_image: .github/reports/images/feature_importance-${{ env.time }}.png
-          residuals_image: .github/reports/images/residuals-${{ env.time }}.png
+          report_path: .github/reports
+          report_md_path: $report_path/${{ env.time }}.md
+          feature_image: images/feature_importance-${{ env.time }}.png
+          residuals_image: images/residuals-${{ env.time }}.png
+            
         run: |
           echo ${{ env.time }}
           echo $report_path
-          echo $feature_image
+          echo $report_path/$feature_image
           echo " ## Model Performance" >> $report_path
           cat metrics.txt >> $report_path
-          cp feature_importance.png $feature_image
-          cp residuals.png $residuals_image
+          cp feature_importance.png $report_path/$feature_image
+          cp residuals.png $report_path/$residuals_image
           echo " ## Visulization" >> $report_path
           echo "![image]($feature_image)" >> $report_path
           echo "![image]($residuals_image)" >> $report_path
