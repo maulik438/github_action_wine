@@ -28,8 +28,8 @@ jobs:
       - name: Result reporting
         run: |
           echo ${{ env.time }}
-          echo $report_path
-          echo $feature_image
+          echo ${{ env.report_path }}
+          echo ${{ env.feature_image }}
           echo " ## Model Performance" >> report_path
           cat metrics.txt >> report_path
           cp feature_importance.png feature_image
