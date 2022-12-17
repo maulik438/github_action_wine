@@ -25,16 +25,16 @@ jobs:
         run: |
           echo ${{ env.report }}
           echo ${{ env.report }}.md
-          #exit 1
-          echo " ## Model Performance" >> ${{ env.report }}.md
-          cat metrics.txt >> ${{ env.report }}.md
+          echo .github/images/${{ env.report }}.md
+          echo " ## Model Performance" >> .github/images/${{ env.report }}.md
+          cat metrics.txt >> .github/images/${{ env.report }}.md
           cp feature_importance.png .github/images/feature_importance.png
           cp residuals.png .github/images/residuals.png
-          echo " ## Visulization" >> ${{ env.report }}.md
-          echo "![image](.github/images/feature_importance.png)" >> ${{ env.report }}.md
-          echo "![image](.github/images/residuals.png)" >> ${{ env.report }}.md 
+          echo " ## Visulization" >> .github/images/${{ env.report }}.md
+          echo "![image](.github/images/feature_importance.png)" >> .github/images/${{ env.report }}.md
+          echo "![image](.github/images/residuals.png)" >> .github/images/${{ env.report }}.md
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
-          file_pattern: '*.md'
+          file_pattern: '.github/images/${{ env.report }}.md .github/images/feature_importance.png .github/images/residuals.png'
           branch: experiment1
