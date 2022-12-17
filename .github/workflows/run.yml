@@ -35,8 +35,8 @@ jobs:
           cp feature_importance.png $feature_image
           cp residuals.png $residuals_image
           echo " ## Visulization" >> $report_path
-          echo "![image]($feature_image)" >> $report_path
-          echo "![image]($residuals_image)" >> $report_path
+          echo "![image](./**/**/$feature_image)" >> $report_path
+          echo "![image](./**/**/$residuals_image)" >> $report_path
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
