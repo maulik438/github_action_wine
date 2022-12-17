@@ -25,7 +25,7 @@ jobs:
       - name: Result reporting
         run: |
           #echo ${report}
-          echo $report
+          #echo $report
           #echo ${{ report }}.md
           exit 1
           echo " ## Model Performance" >> ${report}.md
