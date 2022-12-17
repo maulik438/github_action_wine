@@ -7,8 +7,8 @@ jobs:
       - name: Set the value
         id: step_one
         run: |
-          echo "action_state=yellow" >> $GITHUB_ENV
+          echo "report=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
       - name: Use the value
         id: step_two
         run: |
-          echo "${{ env.action_state }}" # This will output 'yellow'
+          echo "${{ env.report }}" 
