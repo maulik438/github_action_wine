@@ -23,8 +23,8 @@ jobs:
           echo "report=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
       - name: Result reporting
         run: |
-          echo ${env.report}
-          echo ${env.report}.md
+          echo ${{ env.report }}
+          echo ${{ env.report }}.md
           exit 1
           echo " ## Model Performance" >> ${report}.md
           cat metrics.txt >> ${report}.md
