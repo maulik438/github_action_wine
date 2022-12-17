@@ -20,21 +20,25 @@ jobs:
       - name: Get current date
         id: date
         run: |
-          echo "report=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
+          echo "time=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
+        env:
+          report_path: .github/reports/${{ env.date }}.md
+          feature_image: .github/images/feature_importance-${{ env.date }}.png
+          residuals_image: .github/images/residuals-${{ env.date }}.png
       - name: Result reporting
         run: |
-          echo ${{ env.report }}
-          echo ${{ env.report }}.md
-          echo .github/images/${{ env.report }}.md
-          echo " ## Model Performance" >> .github/images/${{ env.report }}.md
-          cat metrics.txt >> .github/images/${{ env.report }}.md
-          cp feature_importance.png .github/images/feature_importance.png
-          cp residuals.png .github/images/residuals.png
-          echo " ## Visulization" >> .github/images/${{ env.report }}.md
-          echo "![image](.github/images/feature_importance.png)" >> .github/images/${{ env.report }}.md
-          echo "![image](.github/images/residuals.png)" >> .github/images/${{ env.report }}.md
+          echo ${{ env.time }}
+          echo $report_path
+          echo $feature_image
+          echo " ## Model Performance" >> report_path
+          cat metrics.txt >> report_path
+          cp feature_importance.png feature_image
+          cp residuals.png residuals_image
+          echo " ## Visulization" >> report_path
+          echo "![image](.github/images/feature_importance.png)" >> report_path
+          echo "![image](.github/images/residuals.png)" >> report_path
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
-          file_pattern: '.github/images/${{ env.report }}.md .github/images/feature_importance.png .github/images/residuals.png'
+          file_pattern: 'report_path feature_image residuals_image'
           branch: experiment1
