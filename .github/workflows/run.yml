@@ -20,8 +20,9 @@ jobs:
       - name: Get current date
         id: date
         run: |
-          echo "report=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
-          run: echo $report     
+          echo $date
+          #echo "report=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+          #run: echo $report     
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
