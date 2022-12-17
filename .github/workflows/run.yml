@@ -20,9 +20,9 @@ jobs:
       - name: Get current date
         id: date
         run: |
-          echo date
-          echo "report=$(date +'%Y-%m-%d-%H-%M-%S')" 
-          echo $report
+          echo $(date)
+          #echo "report=$(date +'%Y-%m-%d-%H-%M-%S')" 
+          #echo $report
           echo "report=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
           echo $report     
 
