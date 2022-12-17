@@ -21,20 +21,7 @@ jobs:
         id: date
         run: |
           echo "report=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
-          run: echo $report
-      - name: Result reporting
-        run: |
-          #echo ${report}
-          #echo $report
-          #echo ${{ report }}.md
-          exit 1
-          echo " ## Model Performance" >> ${report}.md
-          cat metrics.txt >> ${report}.md
-          cp feature_importance.png .github/images/feature_importance.png
-          cp residuals.png .github/images/residuals.png
-          echo " ## Visulization" >> ${report}.md
-          echo "![image](.github/images/feature_importance.png)" >> ${report}.md
-          echo "![image](.github/images/residuals.png)" >> ${report}.md         
+          run: echo $report     
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
