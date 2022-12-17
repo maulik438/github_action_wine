@@ -22,7 +22,7 @@ jobs:
           cat metrics.txt >> report.md
           #cp feature_importance.png .github/images/feature_importance.png
           #cp residuals.png .github/images/residuals.png
-          echo " ## Visulization" >> report.md
+          echo " ## Visulization graph" >> report.md
           #echo "![image](.github/images/feature_importance.png)" >> report.md
           #echo "![image](.github/images/residuals.png)" >> report.md          
           cml-publish feature_importance.png --md >>report.md
