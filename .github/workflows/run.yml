@@ -36,9 +36,9 @@ jobs:
           cat metrics.txt >> $report_md_path
           cp feature_importance.png $report_path/$feature_image
           cp residuals.png $report_path/$residuals_image
-          echo " ## Visulization" >> $report_path
-          echo "![image]($feature_image)" >> $report_path
-          echo "![image]($residuals_image)" >> $report_path
+          echo " ## Visulization" >> $report_md_path
+          echo "![image]($feature_image)" >> $report_md_path
+          echo "![image]($residuals_image)" >> $report_md_path
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
