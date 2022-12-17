@@ -1,0 +1,36 @@
+name: wine-model
+on: [push]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - uses: iterative/setup-cml@v1
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Train model
+        run: |
+          # Your ML workflow goes here
+          python train.py  
+      - name: Result reporting
+        run: |
+          echo " ## Model Performance" >> report.md
+          cat metrics.txt >> report.md
+          #cp feature_importance.png .github/images/feature_importance.png
+          #cp residuals.png .github/images/residuals.png
+          echo " ## Visulization" >> report.md
+          #echo "![image](.github/images/feature_importance.png)" >> report.md
+          #echo "![image](.github/images/residuals.png)" >> report.md          
+          echo "![](./feature_importance.png)" >> report.md
+          cml comment create report.md
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update generated README
+          file_pattern: '*.md *.png'
+          branch: experiment1
