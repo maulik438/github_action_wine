@@ -25,11 +25,11 @@ jobs:
         run: |
           echo ${{ env.report }}
           echo ${{ env.report }}.md
-          exit 1
-          echo " ## Model Performance" >> ${report}.md
-          cat metrics.txt >> ${report}.md
+          #exit 1
+          echo " ## Model Performance" >> ${{ env.report }}.md
+          cat metrics.txt >> ${{ env.report }}.md
           cp feature_importance.png .github/images/feature_importance.png
           cp residuals.png .github/images/residuals.png
-          echo " ## Visulization" >> ${report}.md
-          echo "![image](.github/images/feature_importance.png)" >> ${report}.md
-          echo "![image](.github/images/residuals.png)" >> ${report}.md  
+          echo " ## Visulization" >> ${{ env.report }}.md
+          echo "![image](.github/images/feature_importance.png)" >> ${{ env.report }}.md
+          echo "![image](.github/images/residuals.png)" >> ${{ env.report }}.md 
