@@ -30,15 +30,15 @@ jobs:
           echo ${{ env.time }}
           echo $report_path
           echo $feature_image
-          echo " ## Model Performance" >> report_path
-          cat metrics.txt >> report_path
-          cp feature_importance.png feature_image
-          cp residuals.png residuals_image
-          echo " ## Visulization" >> report_path
-          echo "![image](.github/images/feature_importance.png)" >> report_path
-          echo "![image](.github/images/residuals.png)" >> report_path
+          echo " ## Model Performance" >> $report_path
+          cat metrics.txt >> $report_path
+          cp feature_importance.png $feature_image
+          cp residuals.png $residuals_image
+          echo " ## Visulization" >> $report_path
+          echo "![image](.github/images/feature_importance.png)" >> $report_path
+          echo "![image](.github/images/residuals.png)" >> $report_path
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
-          file_pattern: 'report_path feature_image residuals_image'
+          file_pattern: '.github/reports/* .github/images/*'
           branch: experiment1
