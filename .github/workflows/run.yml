@@ -20,6 +20,9 @@ jobs:
       - name: Result reporting
         run: |
           echo "report=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+          echo $report
+          echo ${report}.md
+          exit 1
           echo " ## Model Performance" >> ${report}.md
           cat metrics.txt >> ${report}.md
           cp feature_importance.png .github/images/feature_importance.png
