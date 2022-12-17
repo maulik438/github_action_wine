@@ -23,9 +23,9 @@ jobs:
           echo "time=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
       - name: Result reporting
         env:
-          report_path: .github/reports/${{ env.date }}.md
-          feature_image: .github/images/feature_importance-${{ env.date }}.png
-          residuals_image: .github/images/residuals-${{ env.date }}.png
+          report_path: .github/reports/${{ env.time }}.md
+          feature_image: .github/images/feature_importance-${{ env.time }}.png
+          residuals_image: .github/images/residuals-${{ env.time }}.png
         run: |
           echo ${{ env.time }}
           echo $report_path
