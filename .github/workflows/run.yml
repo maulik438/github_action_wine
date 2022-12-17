@@ -42,5 +42,5 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
-          file_pattern: '.github/reports/* .github/images/*'
+          file_pattern: '.github/reports/*'
           branch: experiment1
