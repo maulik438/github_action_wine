@@ -17,11 +17,14 @@ jobs:
         run: |
           # Your ML workflow goes here
           python train.py  
+      - name: Get current date
+        id: date
+        run: |
+          echo "{date}={$(date +'%Y-%m-%d')}" >> $GITHUB_STATE
       - name: Result reporting
         run: |
-          echo "report=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
-          echo $report
-          echo ${report}.md
+          echo ${{ env.date }}
+          echo ${{ env.date }}.md
           exit 1
           echo " ## Model Performance" >> ${report}.md
           cat metrics.txt >> ${report}.md
