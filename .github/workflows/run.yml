@@ -33,3 +33,8 @@ jobs:
           echo " ## Visulization" >> ${{ env.report }}.md
           echo "![image](.github/images/feature_importance.png)" >> ${{ env.report }}.md
           echo "![image](.github/images/residuals.png)" >> ${{ env.report }}.md 
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update generated README
+          file_pattern: '*.md'
+          branch: experiment1
