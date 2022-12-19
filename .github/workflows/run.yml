@@ -17,13 +17,30 @@ jobs:
         run: |
           # Your ML workflow goes here
           python train.py  
-          echo " ## Model Performance" >> report.md
-          cat metrics.txt >> report.md
+      - name: Get current date
+        id: date
+        run: |
+          echo "time=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
+      - name: Result reporting
+        env:
+          report_path: .github/reports
+          report_md_path: .github/reports/${{ env.time }}.md
+          feature_image: images/feature_importance-${{ env.time }}.png
+          residuals_image: images/residuals-${{ env.time }}.png
+            
+        run: |
+          echo ${{ env.time }}
+          echo $report_path
+          echo $report_path/$feature_image
+          echo " ## Model Performance" >> $report_md_path
+          cat metrics.txt >> $report_md_path
+          cp feature_importance.png $report_path/$feature_image
+          cp residuals.png $report_path/$residuals_image
+          echo " ## Visulization" >> $report_md_path
+          echo "![image]($feature_image)" >> $report_md_path
+          echo "![image]($residuals_image)" >> $report_md_path
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update generated README
-          branch: main
-          commit_user_name: Maulik
-          commit_user_email: maulik@github.com
-          commit_author: Maulik <maulik@github.com>
-
+          file_pattern: '.github/reports/*'
+          branch: experiment1
